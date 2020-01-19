@@ -1,0 +1,15 @@
+{% include 'wiki/base.html' %}
+
+{%block search_results %}
+    <table>
+        {% if search_results %}
+            {% for item in search_results %}
+                <tr>
+                    <p> {{item.title}} </p>
+                    <p> {{item.snippet}} </p>
+                    <p> <a href="http://127.0.0.1:8000/wiki/download/?item={{item.title}}"> Download as PDF</a></p>
+                </tr> </br>
+            {% endfor %}
+        {% endif %}
+    </table>
+{% endblock %}

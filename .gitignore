@@ -1,0 +1,7 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+wiki/__pycache__
+melvalut/__pycache__
+wiki/migrations/
+.pytest_cache
+wiki.log
+.idea

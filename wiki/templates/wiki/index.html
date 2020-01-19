@@ -1,0 +1,18 @@
+{% include 'wiki/base.html' %}
+{% block searchform %}
+    <form action="/wiki/index/" method="POST">
+        {% csrf_token %}
+        Search: <input name='search_item' placeholder="Search Something" value={{search_item}}>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
+
+{% block suggestions %}
+    {% if suggestions %}
+        <table>
+            {% for item in suggestions %}
+            <tr> <a href="http://127.0.0.1:8000/wiki/search/?item={{item}}">{{item}}</a></tr></br>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}
