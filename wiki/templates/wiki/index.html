@@ -1,18 +1,37 @@
 {% include 'wiki/base.html' %}
 {% block searchform %}
-    <form action="/wiki/index/" method="POST">
-        {% csrf_token %}
-        Search: <input name='search_item' placeholder="Search Something" value={{search_item}}>
-        <button type="submit">Submit</button>
-    </form>
+        <div id="search_form" style="width: 100%;margin-left: 20%;margin-right: 20%">
+            <h2 style="margin-left: 15%;">WiKi Search</h2>
+            <form action="/wiki/index/" method="POST">
+                <div class="row">
+                    {% csrf_token %}
+                    <div class="col">
+                        <input id='search_item' name="search_item" class="form-control" placeholder="search here ..." value={{search_item}}>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
 {% endblock %}
 
 {% block suggestions %}
     {% if suggestions %}
-        <table>
-            {% for item in suggestions %}
-            <tr> <a href="http://127.0.0.1:8000/wiki/search/?item={{item}}">{{item}}</a></tr></br>
-            {% endfor %}
-        </table>
+        <div style="width: 100%;margin-left: 20%;margin-right: 20%">
+            <h4>Suggestions</h4>
+            <table class="table table-stripped">
+                <tbody>
+                    {% for item in suggestions %}
+                    <tr>
+                        <td>
+                            <a href="http://127.0.0.1:8000/wiki/search/?item={{item}}">{{item}}</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 {% endblock %}

@@ -1,15 +1,24 @@
 {% include 'wiki/base.html' %}
 
 {%block search_results %}
-    <table>
+    <table class="table table-stripped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Search Result</th>
+                <th style="text-align: center;">Description</th>
+                <th>Download Link</th>
+            </tr>
+        </thead>
         {% if search_results %}
-            {% for item in search_results %}
-                <tr>
-                    <p> {{item.title}} </p>
-                    <p> {{item.snippet}} </p>
-                    <p> <a href="http://127.0.0.1:8000/wiki/download/?item={{item.title}}"> Download as PDF</a></p>
-                </tr> </br>
-            {% endfor %}
+            <tbody>
+                {% for item in search_results %}
+                    <tr>
+                        <td> <p>{{item.title}}</p> </td>
+                        <td> <p>{{item.snippet}} </p></td>
+                        <td> <a href="http://127.0.0.1:8000/wiki/download/?item={{item.title}}"> Download as PDF</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         {% endif %}
     </table>
 {% endblock %}
